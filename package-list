@@ -1,0 +1,7 @@
+com.ibm.ecm.api.coresdk.collection
+com.ibm.ecm.api.coresdk.constants
+com.ibm.ecm.api.coresdk.exception
+com.ibm.ecm.api.coresdk.factory
+com.ibm.ecm.api.coresdk.model
+com.ibm.ecm.api.coresdk.model.http
+com.ibm.ecm.api.nls

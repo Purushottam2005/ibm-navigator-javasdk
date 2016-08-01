@@ -1,0 +1,117 @@
+.greenheader {
+    color: white;
+    background-color: #006600;
+    font-weight: bold;
+    margin-bottom: -26px;
+    padding: 3px;
+    font-size: 70%;
+}
+
+.blueheader {
+    color: white;
+    background-color: #000099;
+    font-weight: bold;
+    margin-bottom: -26px;
+    padding: 3px;
+    font-size: 70%;
+}
+
+
+.sdk {
+    color: white;
+    background-color: #c17702;
+    border-color: #935b01;
+    font-size: 0.8em;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.spec {
+    color: white;
+    background-color: #008cba;
+    border-color: #0079a1;
+    font-size: 0.8em;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.admonition {
+    border-width: 1px;
+    border-style: solid;
+    padding: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.admonition-title {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.3em;
+    font-weight: bold;
+    vertical-align: baseline;
+}
+
+div[class~="admonition"] a {
+    color: white;
+    text-decoration: underline;
+}
+
+.note {
+    color: white;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
+div[class~="note"] p[class~="admonition-title"]::before {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.3em;
+    line-height: 1;
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div[class~="note"] code {
+    background-color: transparent;
+}
+
+.warning {
+    color: white;
+    background-color: #f04124;
+    border-color: #ea2f10;
+}
+
+div[class~="warning"] p[class~="admonition-title"]::before {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.3em;
+    line-height: 1;
+    vertical-align: baseline;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+div[class~="warning"] code {
+    background-color: transparent;
+}
+
+dt { 
+	margin-bottom: .5em; 
+}
+
+dd { 
+	margin-bottom: .5em; 
+	margin-left: 1em; 
+}

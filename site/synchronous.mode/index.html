@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="author" content="IBM">  
+    <link rel="shortcut icon" href="../img/favicon.png">
+
+    <title>Async versus synchronous operation - IBM Content Navigator SDK</title>
+
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="../css/cinder.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/highlight.css">
+
+
+    <link href="../css/navigator.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+    
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../index.html">IBM Content Navigator SDK</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../index.html">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../overview/index.html">Overview</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../download/index.html">Downloading the SDK</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../getstarted/index.html">Getting started with the SDK</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="index.html">Async versus synchronous operation</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../notices/index.html">Notices</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search" aria-hidden="true"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../getstarted/index.html">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../notices/index.html">
+                            Next <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                
+                <li>
+                    <a href="https://www.ibm.com" style="padding: 2px;">
+                        <img src="../img/ibm.png">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="first-level active"><a href="#synchronous-versus-asynchronous-modes">Synchronous versus Asynchronous modes</a></li>
+        
+            <li class="second-level"><a href="#sdk-design">SDK design</a></li>
+            
+        
+            <li class="second-level"><a href="#example-of-wrapping-an-asynchronous-call">Example of wrapping an asynchronous call</a></li>
+            
+        
+    
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="synchronous-versus-asynchronous-modes">Synchronous versus Asynchronous modes</h2>
+<p>Applies to <span class="spec">Version 1.0.0.0</span></p>
+<h3 id="sdk-design">SDK design</h3>
+<p>The current version of the SDK is an asynchronous API.  This makes is especially easy to use in mobile and desktop applications where the SDK is passing back information to a user interface (UI).  Although future versions of the API may support blocking synchronous calls natively, it is very easy to construct blocking wrappers around the API calls when needed with the current version.  To make this process easier we have included several reuseable examples of this in the command line examples.  </p>
+<p>Specifically look at the <code>SynchronousWrappers.java</code> class in the <code>com.ibm.ecm.api.testutils</code> package.    This pattern can be duplicated for all of the current SDK methods that are asynchronous. </p>
+<hr />
+<h3 id="example-of-wrapping-an-asynchronous-call">Example of wrapping an asynchronous call</h3>
+<p>Included below is one such example that takes the asynchronous <code>retrieveItem</code> call on the <code>IBMECMRepository</code> object and turns it into a self contained single blocking function call returning the awaited <code>IBMECMContentItem</code> (root folder) result.  Take note of the <code>.init()</code> method used to pass in the return value holder. </p>
+<p class="blueheader">Synchronous wrapper example (retrieveFolderContent)</p>
+<pre><code class="java">public static IBMECMContentItem getRootFolderObjectSync(
+  IBMECMRepository repository) {
+        final CountDownLatch signal = new CountDownLatch(1);
+        Holder&lt;IBMECMContentItem&gt; returnVal = new Holder&lt;&gt;(null);
+        String docId = &quot;/&quot;;
+
+        repository.retrieveItem(docId, 
+          new IBMECMCompletionHandler&lt;IBMECMContentItem&gt;() {
+            private Holder&lt;IBMECMContentItem&gt; anonHolder;
+
+            @Override
+            public void onCompleted(IBMECMContentItem result) {
+                anonHolder.setValue(result);
+                signal.countDown();
+            }
+
+            @Override
+            public void onError(IBMECMRuntimeException exp) {
+                // handle exception ...
+                signal.countDown();
+            }
+
+            private IBMECMCompletionHandler&lt;IBMECMContentItem&gt; init(
+              Holder&lt;IBMECMContentItem&gt; item) {
+                anonHolder = item;
+                return this;
+            }
+        }.init(returnVal));
+
+        try {
+            signal.await(SERVICE_TIMEOUT, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        return returnVal.getValue();
+    }
+
+</code></pre></div>
+        
+    </div>
+
+    <footer class="col-md-12 text-center">
+        <hr>
+        <p>
+        <small>© Copyright IBM Corporation 2016<br></small>
+        
+    </footer>
+
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+    var base_url = '..';
+    </script>
+    <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+    <script src="../js/base.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        From here you can search these documents. Enter your search terms below.
+                    </p>
+                    <form role="form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                        </div>
+                    </form>
+                    <div id="mkdocs-search-results"></div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../js/retina.min.js"></script>
+    </body>
+
+</html>
+<!-- last update: 2016-08-01 16:51:49.013137 -->
