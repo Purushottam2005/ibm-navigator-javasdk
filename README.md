@@ -1,11 +1,12 @@
-# ibm-navigator-javasdk
+# IBM Content Navigator Java SDK 
 This repository is a comprehensive resource for all materials relating to the IBM Content Navigator Java SDK, including all of the sample code for desktop and mobile use including JavaDocs.
 
-## Main Documentation Site
 For more information please refer to the main documentation site for the SDK [here](https://ibm-ecm.github.io/ibm-navigator-javasdk/site/index.html)
 
-
 ## Sample projects 
+
+### Android sample
+The Android sample [here](https://github.com/ibm-ecm/ibm-navigator-mobilesdk-sample-android) demonstrates the features of IBM Content Navigator SDK (Java) when running in an Android application. 
 
 ### Command line sample
 The command line sample (`sample.projects/command.line.sample`) shows how to do 
