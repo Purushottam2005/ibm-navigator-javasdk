@@ -23,7 +23,7 @@ going to be using mvn (or gradle) to manage your project.
 ### Adding the the SDK jar to the local mvn repo  ***  (only need to do once per develop machine)
 Substitute your path to the jar for './lib/IBMECMCore.jar' below
 
-    mvn install:install-file -Dfile=./lib/IBMECMCore.jar -DgroupId=com.ibm.ecm -DartifactId=IBMECMCore -Dversion=0.0.1 -Dpackaging=jar
+    mvn install:install-file -Dfile=./lib/IBMECMCore.jar -DgroupId=com.ibm.ecm -DartifactId=IBMECMCore -Dversion=1.0.0 -Dpackaging=jar
 
 ### Compiling and assembling the jar (with dependencies) 
     mvn clean compile assembly:single
