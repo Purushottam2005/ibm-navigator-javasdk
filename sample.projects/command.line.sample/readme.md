@@ -25,7 +25,7 @@ Substitute your path to the jar for './lib/IBMECMCore.jar' below
     mvn install:install-file -Dfile=./lib/IBMECMCore.jar -DgroupId=com.ibm.ecm -DartifactId=IBMECMCore -Dversion=1.0.0 -Dpackaging=jar
 
 ### Sample.properties file setttings
-The following settings must be filled in (before you compile) in your `src/main/resources/sample.properties` file for the Watson service to operate:
+The following settings must be filled in (before you compile) in your `src/main/resources/sample.properties` file for the sample to operate:
 
 `sdk.test.icn.url` : The url of your Navigator listener. 
 e.g. `sdk.test.icn.url=https://your.icn.server.here:9443/navigator`
