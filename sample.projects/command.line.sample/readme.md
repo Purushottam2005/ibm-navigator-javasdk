@@ -12,8 +12,7 @@ synchronous calls.   See the com.ibm.ecm.api.Sample.java file for more details.
 
 
 ## Setting up your build
-After obtaining the SDK jar file from your distribution, 
-(IBMECMCore.jar can be found in the lib directory of this sample) 
+After obtaining the SDK jar file from your distribution, Instructions [here](https://ibm-ecm.github.io/ibm-navigator-javasdk/site/download/index.html) 
 you will need to add the jar to your Maven repository
 so that any pom.xml based project can list it as a dependency. 
 
