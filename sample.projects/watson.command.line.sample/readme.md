@@ -38,7 +38,16 @@ Substitute your path to the jar for './lib/IBMECMCore.jar' below
     mvn install:install-file -Dfile=./lib/IBMECMCore.jar -DgroupId=com.ibm.ecm -DartifactId=IBMECMCore -Dversion=1.0.0 -Dpackaging=jar
     
 ### Sample.properties file setttings
-The following settings must be filled in (before you compile) in your sample.properties file for the Watson service to operate:
+The following settings must be filled in (before you compile) in your `src/main/resources/sample.properties` file for the sample and Watson services to operate:
+
+`sdk.test.icn.url` : The url of your Navigator listener. 
+e.g. `sdk.test.icn.url=https://your.icn.server.here:9443/navigator`
+
+`sdk.userName` : The user name to use for authentication. 
+e.g. `sdk.userName=user123`
+
+`sdk.password` : The password to use for authentication. 
+e.g. `sdk.password=password456`
 
 `directoryToScan` : This is the path of the directory to scan.  In our example we placed some text format book from project [Gutenberg](http://www.gutenberg.org/) and some images. Note the text files must be named something.txt (anything with .txt at the end) or something.jpg/png (any image with .png or .jpg at the end) This is the way the code identifies acceptable test files.  
 
