@@ -36,6 +36,14 @@ going to be using mvn (or gradle) to manage your project.
 Substitute your path to the jar for './lib/IBMECMCore.jar' below
 
     mvn install:install-file -Dfile=./lib/IBMECMCore.jar -DgroupId=com.ibm.ecm -DartifactId=IBMECMCore -Dversion=1.0.0 -Dpackaging=jar
+    
+### Sample.properties file setttings
+The following settings must be filled in (before you compile) in your sample.properties file for the Watson service to operate:
+
+`directoryToScan` : This is the path of the directory to scan.  In our example we placed some text format book from project [Gutenberg](http://www.gutenberg.org/) and some images. Note the text files must be named something.txt (anything with .txt at the end) or something.jpg/png (any image with .png or .jpg at the end) This is the way the code identifies acceptable test files.  
+
+`watson.api.key` : Before running the sample you must also get your own Alchemy API key from Bluemix.   See [link](http://blog.alchemyapi.com/getting-started-with-alchemyapi-on-bluemix) for instructions.    
+
 
 ### Compiling and assembling the jar (with dependencies) 
     mvn clean compile assembly:single
@@ -46,12 +54,6 @@ Substitute your path to the jar for './lib/IBMECMCore.jar' below
 ### Executing from the command line without maven:
     java  -jar  ./target/IBMECMCoreSample-1.0-SNAPSHOT-jar-with-dependencies.jar <optional parameters for app here >
 
-### Sample.properties file setttings
-The following settings must be filled in in  your sample.properties file for the Watson service to operate:
-
-`directoryToScan` : This is the path of the directory to scan.  In our example we placed some text format book from project [Gutenberg](http://www.gutenberg.org/) and some images. Note the text files must be named something.txt (anything with .txt at the end) or something.jpg/png (any image with .png or .jpg at the end) This is the way the code identifies acceptable test files.  
-
-`watson.api.key` : Before running the sample you must also get your own Alchemy API key from Bluemix.   See [link](http://blog.alchemyapi.com/getting-started-with-alchemyapi-on-bluemix) for instructions.    
 
 
 ## POM file changes for Alchemy
